@@ -1,4 +1,4 @@
-package com.revature.FoodStuff;
+package com.revature.foodstuff;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
