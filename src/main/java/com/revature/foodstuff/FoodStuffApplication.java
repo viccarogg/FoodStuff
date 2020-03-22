@@ -16,7 +16,7 @@ public class FoodStuffApplication {
 	DataSource dataSource;
 
 	@Autowired
-	CommentsRepository commentsRepository;
+	CommentsRepository commentsRepository; 
 
 	public static void main(String[] args) {
 		SpringApplication.run(FoodStuffApplication.class, args);
