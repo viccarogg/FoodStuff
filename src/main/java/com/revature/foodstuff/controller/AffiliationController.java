@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.foodstuff.model.Followers;
+import com.revature.foodstuff.model.Follower;
 import com.revature.foodstuff.repository.AffiliationRepository;
 
 @RestController
@@ -31,7 +31,7 @@ public class AffiliationController {
 	private AffiliationRepository affiliationRepository;
 
 	@GetMapping("/followers")
-	public List<Followers> getAllFollowers() {
+	public List<Follower> getAllFollowers() {
 		return affiliationRepository.findAll();
 	}
 

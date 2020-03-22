@@ -9,17 +9,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "comments")
-public class Comments {
+public class Comment {
 	@Id
 	@Column(name="comment_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int commentId;
+	long commentId;
 	
 	@Column(name = "user_id")
-	int userId;
+	long userId;
 	
 	@Column(name="post_id")
-	int postId;
+	long postId;
 	
 	@Column(name = "comments")
 	String comments;
@@ -27,7 +27,7 @@ public class Comments {
 	@Column(name = "flagged")
 	int flag;
 
-	public int getCommentId() {
+	public long getCommentId() {
 		return commentId;
 	}
 
@@ -35,7 +35,7 @@ public class Comments {
 		this.commentId = commentId;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
@@ -43,7 +43,7 @@ public class Comments {
 		this.userId = userId;
 	}
 
-	public int getPostId() {
+	public long getPostId() {
 		return postId;
 	}
 

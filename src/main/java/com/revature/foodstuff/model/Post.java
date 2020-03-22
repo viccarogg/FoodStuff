@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "POSTS")
+@Table(name = "POST")
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +30,7 @@ public class Post {
 	private long userId;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
-	private List<Comments> comments = new ArrayList<Comments>();
+	private List<Comment> comments = new ArrayList<Comment>();
 	
 	@Column(name="flagged")
 	private int flag;
@@ -61,11 +61,11 @@ public class Post {
 		this.userId = userId;
 	}
 
-	public List<Comments> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comments> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 

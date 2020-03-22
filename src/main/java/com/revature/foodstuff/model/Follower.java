@@ -10,7 +10,7 @@ import javax.persistence.Table;
 //testing 
 @Entity
 @Table(name = "Affiliation")
-public class Followers {
+public class Follower {
 	 private long affiliationID;
 	 private int followerID;
 	 private int followeeID;
