@@ -25,14 +25,13 @@ public class Post {
 	@Column(name = "CONTENT", nullable = false)
 	private String content;
 
-	
-	 // @ManyToOne
-	  
-	  //@JoinColumn(name = "USER_ID", nullable = false) 
-	private Long userId;
-	 
+	@ManyToOne
+	@JoinColumn(name = "USER_ID", nullable = false)
+	private User userId;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
 	private List<Comment> comments = new ArrayList<Comment>();
+	
 
 	@Column(name = "flagged")
 	private int flag;
@@ -56,20 +55,21 @@ public class Post {
 		this.content = content;
 	}
 
-	public long getUserId() {
+	public User getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(User userId) {
 		this.userId = userId;
 	}
 
-	/*
-	 * public List<Comment> getComments() { return comments; }
-	 * 
-	 * 
-	 * public void setComments(List<Comment> comments) { this.comments = comments; }
-	 */
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 	public int getFlag() {
 		return flag;

@@ -11,39 +11,39 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Affiliation")
 public class Follower {
-	 private long affiliationID;
-	 private int followerID;
-	 private int followeeID;
+	 private Long affiliationID;
+	 private User followerID;
+	 private User followeeID;
 
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.AUTO)
-	public long getAffiliationID() {
+	public Long getAffiliationID() {
 		return affiliationID;
 	}
 
 	  
-	public void setAffiliationID(long affiliationID) {
+	public void setAffiliationID(Long affiliationID) {
 		this.affiliationID = affiliationID;
 	}
 	
 	
 	  @Column(name = "follower_ID", nullable = false)
-	public int getFollowerID() {
+	public User getFollowerID() {
 		return followerID;
 	}
 
 	  
-	public void setFollowerID(int followerID) {
+	public void setFollowerID(User followerID) {
 		this.followerID = followerID;
 	}
 	
 	
 	  @Column(name = "followee_ID", nullable = false)
-	public int getFolloweeID() {
+	public User getFolloweeID() {
 		return followeeID;
 	}
 
-	public void setFolloweeID(int followeeID) {
+	public void setFolloweeID(User followeeID) {
 		this.followeeID = followeeID;
 	} 
 	  
