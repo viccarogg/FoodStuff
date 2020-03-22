@@ -17,20 +17,21 @@ public class Comment {
 	@Id
 	@Column(name="comment_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long commentId;
+	private Long commentId;
 	
 	@Column(name = "user_id")
-	Long userId;
-	
+	private Long userId;
+
+
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
 	
 	@Column(name = "comments")
-	String comments;
+	private String comments;
 	
 	@Column(name = "flagged")
-	int flag;
+	private int flag;
 
 	public Long getCommentId() {
 		return commentId;
