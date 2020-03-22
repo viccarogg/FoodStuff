@@ -23,6 +23,7 @@ import com.revature.foodstuff.repository.AffiliationRepository;
 @CrossOrigin(origins = "http://localhost:4200")
 
 //@CrossOrigin(origins = "*")	
+// testing 
 
 @RequestMapping("/Affiliations")
 public class AffiliationController {
