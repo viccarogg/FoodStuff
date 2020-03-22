@@ -13,19 +13,19 @@ public class Comment {
 	@Id
 	@Column(name="comment_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	long commentId;
+	private long commentId;
 	
 	@Column(name = "user_id")
-	long userId;
+	 private long userId;
 	
 	@Column(name="post_id")
-	long postId;
+	private long postId;
 	
 	@Column(name = "comments")
-	String comments;
+	private String comments;
 	
 	@Column(name = "flagged")
-	int flag;
+	private int flag;
 
 	public long getCommentId() {
 		return commentId;
