@@ -24,7 +24,7 @@ public class Comment {
 	
 	@ManyToOne
 	@JoinColumn(name="post_id")
-	Long postId;
+	private Post post;
 	
 	@Column(name = "comments")
 	String comments;
@@ -48,12 +48,12 @@ public class Comment {
 		this.userId = userId;
 	}
 
-	public Long getPostId() {
-		return postId;
+	public Post getPost() {
+		return post;
 	}
 
-	public void setPostId(Long postId) {
-		this.postId = postId;
+	public void setPost(Post post) {
+		this.post = post;
 	}
 
 	public String getComments() {

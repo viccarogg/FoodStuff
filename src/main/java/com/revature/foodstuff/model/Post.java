@@ -31,7 +31,7 @@ public class Post {
 	  //@JoinColumn(name = "USER_ID", nullable = false) 
 	private Long userId;
 	 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
 	private List<Comment> comments = new ArrayList<Comment>();
 
 	@Column(name = "flagged")
