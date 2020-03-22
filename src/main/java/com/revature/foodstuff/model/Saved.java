@@ -20,12 +20,13 @@ public class Saved {
 	
 	 
 	  @Id
+	  @Column(name = "saved_id")
 	  @GeneratedValue(strategy = GenerationType.AUTO)
 	 public long getSavedID() {
 		return savedID;
 	}
 	  
-	  
+	 
 	public void setSavedID(long savedID) {
 		this.savedID = savedID;
 	}

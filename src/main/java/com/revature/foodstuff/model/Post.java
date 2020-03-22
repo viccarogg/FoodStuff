@@ -20,17 +20,19 @@ public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "POST_ID")
-	private long postId;
+	private Long postId;
 
 	@Column(name = "CONTENT", nullable = false)
 	private String content;
 
-	// @ManyToOne
-	@JoinColumn(name = "USER_ID", nullable = false)
-	private long userId;
-
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
-	// private List<Comment> comments = new ArrayList<Comment>();
+	
+	 // @ManyToOne
+	  
+	  //@JoinColumn(name = "USER_ID", nullable = false) 
+	private Long userId;
+	 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
+	private List<Comment> comments = new ArrayList<Comment>();
 
 	@Column(name = "flagged")
 	private int flag;
@@ -42,7 +44,7 @@ public class Post {
 		return postId;
 	}
 
-	public void setPostId(long postId) {
+	public void setPostId(Long postId) {
 		this.postId = postId;
 	}
 
@@ -58,7 +60,7 @@ public class Post {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
