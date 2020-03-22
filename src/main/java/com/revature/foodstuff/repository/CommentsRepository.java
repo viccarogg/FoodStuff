@@ -11,5 +11,4 @@ import com.revature.foodstuff.model.Comments;
 public interface CommentsRepository extends JpaRepository<Comments, Long> {
 	
 
-
 }

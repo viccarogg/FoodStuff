@@ -23,24 +23,4 @@ public class FoodStuffApplication {
 
 	}
 
-//	public void run(String... args) {
-//
-//		System.out.println("DATASOURCE = " + dataSource);
-//		String comment = "What kind of sauce are you using?";
-//		Comments newComment = new Comments();
-//		newComment.setComments(comment);
-//		newComment.setFlag(0);
-//		newComment.setUserId(2);
-//		
-//		commentsRepository.save(newComment);
-//		
-//	}
-//		
-//		
-//		System.out.println("\n1.findAll()...");
-//	    for (Comments comments : commentsRepository.findFlagged(1)) {
-//	        System.out.println(comments);
-//	    }
-//
-//	}
 }
