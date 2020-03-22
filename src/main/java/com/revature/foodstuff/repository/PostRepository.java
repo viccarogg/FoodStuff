@@ -10,6 +10,8 @@ import com.revature.foodstuff.model.Post;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-	@Query("SELECT p FROM POSTS p WHERE p.USER_ID = :userId")
-    public List<Post> findByUserId(@Param("userId") Long userId);
+	/*
+	 * @Query("SELECT p FROM POSTS p WHERE p.USER_ID = :userId") public List<Post>
+	 * findByUserId(@Param("userId") Long userId);
+	 */
 }

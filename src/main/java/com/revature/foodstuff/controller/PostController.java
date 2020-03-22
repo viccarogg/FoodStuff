@@ -25,19 +25,20 @@ public class PostController {
 	public List<Post> getAllPosts() {
 		return postRepository.findAll();
 	}
-	
+
 	@GetMapping("/post/{id}")
-	public Post getPostById(@PathVariable(value="id") Long postId) {
+	public Post getPostById(@PathVariable(value = "id") Long postId) {
 		Optional<Post> postOpt = postRepository.findById(postId);
-		if(postOpt.isPresent())
+		if (postOpt.isPresent())
 			return postOpt.get();
 		else
 			return null; // want to do custom response probably, null is bad i think
 	}
-	
-	@GetMapping("/post/user/{id}")
-	public List<Post> getPostsByUser(@PathVariable(value="id") Long userId) {
-		return postRepository.findByUserId(userId);
-	}
-	
+
+	/*
+	 * @GetMapping("/post/user/{id}") public List<Post>
+	 * getPostsByUser(@PathVariable(value="id") Long userId) { return
+	 * postRepository.findByUserId(userId); }
+	 */
+
 }
