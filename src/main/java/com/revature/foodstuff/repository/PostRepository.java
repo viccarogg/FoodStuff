@@ -12,4 +12,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
 	@Query("SELECT p FROM POSTS p WHERE p.USER_ID = :userId")
     public List<Post> findByUserId(@Param("userId") Long userId);
+	
+	@Query("SELECT postId FROM SAVES_POSTS WHERE user_id = :userId")
+	public List<Post> findByUserSaves(@Param("userId") Long userId);
 }
