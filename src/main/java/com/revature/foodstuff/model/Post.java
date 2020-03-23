@@ -47,6 +47,9 @@ public class Post {
 
 	@Column(name = "flagged")
 	private int flag;
+	
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="savedPost")
+	private List<User> savedBy = new ArrayList<User>();
 
 	public Post() {
 	}
