@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,6 +37,21 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
 	private List<Post> posts = new ArrayList<Post>();
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "USER_SAVED_POSTS", 
+	joinColumns = { @JoinColumn(name = "USER_ID") }, 
+	inverseJoinColumns = { @JoinColumn(name = "POST_ID") })
+	private List<Post> savedPost = new ArrayList<Post>();
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	 @JoinTable(name = "FOLLOWERS", 
+	 joinColumns = { @JoinColumn(name = "USER_ID") }, 
+	 inverseJoinColumns = { @JoinColumn(name = "FOLLOWER_ID") })
+	private List<User> followers = new ArrayList<User>();
+	
+	@ManyToMany(mappedBy="followers")
+	private List<User> following = new ArrayList<User>();
+	
 	public int getUserId() {
 		return userId;
 	}
