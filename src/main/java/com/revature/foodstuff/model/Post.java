@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,28 +22,29 @@ public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "POST_ID")
-	private long postId;
+	private Long postId;
 
 	@Column(name = "CONTENT", nullable = false)
 	private String content;
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID", nullable = false)
-	private long userId;
+	private User userId;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
-	private List<Comments> comments = new ArrayList<Comments>();
-	
-	@Column(name="flagged")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+	private List<Comment> comments = new ArrayList<Comment>();
+
+	@Column(name = "flagged")
 	private int flag;
 
-	public Post() {}
-	
+	public Post() {
+	}
+
 	public long getPostId() {
 		return postId;
 	}
 
-	public void setPostId(long postId) {
+	public void setPostId(Long postId) {
 		this.postId = postId;
 	}
 
@@ -53,19 +56,19 @@ public class Post {
 		this.content = content;
 	}
 
-	public long getUserId() {
+	public User getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(User userId) {
 		this.userId = userId;
 	}
 
-	public List<Comments> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comments> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 

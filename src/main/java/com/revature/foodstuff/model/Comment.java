@@ -5,50 +5,56 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "comments")
-public class Comments {
+public class Comment {
+	
+	
 	@Id
 	@Column(name="comment_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int commentId;
+	private Long commentId;
 	
 	@Column(name = "user_id")
-	int userId;
-	
-	@Column(name="post_id")
-	int postId;
+	private Long userId;
+
+
+	@ManyToOne
+	@JoinColumn(name="post_id")
+	private Post post;
 	
 	@Column(name = "comments")
-	String comments;
+	private String comments;
 	
 	@Column(name = "flagged")
-	int flag;
+	private int flag;
 
-	public int getCommentId() {
+	public Long getCommentId() {
 		return commentId;
 	}
 
-	public void setCommentId(int commentId) {
+	public void setCommentId(Long commentId) {
 		this.commentId = commentId;
 	}
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public int getPostId() {
-		return postId;
+	public Post getPost() {
+		return post;
 	}
 
-	public void setPostId(int postId) {
-		this.postId = postId;
+	public void setPost(Post post) {
+		this.post = post;
 	}
 
 	public String getComments() {
