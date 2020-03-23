@@ -7,13 +7,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.revature.foodstuff.model.Post;
+import com.revature.foodstuff.model.User;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-	@Query("SELECT p FROM POSTS p WHERE p.USER_ID = :userId")
+	// this method finds posts based on the user that created them
+	@Query(value="SELECT * FROM POSTS p WHERE p.user_id = :userId",
+		   nativeQuery=true)
     public List<Post> findByUserId(@Param("userId") Long userId);
 	
-	@Query("SELECT postId FROM SAVES_POSTS WHERE user_id = :userId")
+	// this method finds posts based on the user that saved them
+	@Query(value="select p.post_id, p.title, p.content, p.flagged, p.user_id from POSTS p " + 
+			"inner join USER_SAVED_POSTS s " + 
+			"on p.post_id = s.post_id " + 
+			"where s.user_id = :userId",
+			nativeQuery=true)
 	public List<Post> findByUserSaves(@Param("userId") Long userId);
 
 }

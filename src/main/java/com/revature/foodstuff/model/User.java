@@ -23,7 +23,7 @@ public class User {
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userId;
+	private Long userId;
 
 	@Column(name = "username")
 	private String userName;
@@ -52,11 +52,11 @@ public class User {
 	@ManyToMany(mappedBy="followers")
 	private List<User> following = new ArrayList<User>();
 	
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

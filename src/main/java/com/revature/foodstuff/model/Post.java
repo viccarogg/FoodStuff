@@ -26,6 +26,17 @@ public class Post {
 
 	@Column(name = "CONTENT", nullable = false)
 	private String content;
+	
+	@Column(name = "TITLE", nullable=false)
+	private String title;
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID", nullable = false)
@@ -40,7 +51,7 @@ public class Post {
 	public Post() {
 	}
 
-	public long getPostId() {
+	public Long getPostId() {
 		return postId;
 	}
 
