@@ -16,11 +16,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "POSTS")
+@Transactional
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
