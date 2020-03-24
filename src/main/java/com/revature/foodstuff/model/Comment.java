@@ -2,6 +2,7 @@ package com.revature.foodstuff.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Lazy;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -26,9 +30,11 @@ public class Comment {
 	private Long userId;
 
 
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
+	
 	
 	@Column(name = "comments")
 	private String comments;

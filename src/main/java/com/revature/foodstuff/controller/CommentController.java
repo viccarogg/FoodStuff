@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.FetchType;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ public class CommentController {
 
 	@Autowired
 	private CommentRepository commentRepository;
-
+	
+	
 	@GetMapping("/comments")
 	public List<Comment> getAllComments() {
 
