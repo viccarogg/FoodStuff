@@ -29,7 +29,7 @@ public class User {
 	private Long userId;
 
 	@Column(name = "username")
-	private String userName;
+	private String username;
 	
 	@Column(name = "password")
 	private String password;
@@ -37,7 +37,7 @@ public class User {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch=FetchType.LAZY)
 	private List<Post> posts = new ArrayList<Post>();
 
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -63,12 +63,12 @@ public class User {
 		this.userId = userId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {

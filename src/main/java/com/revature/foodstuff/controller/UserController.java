@@ -33,6 +33,16 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@PostMapping("/login")
+	public ResponseEntity<User> loginUser(@RequestBody User toLogin )
+		throws ResourceNotFoundException {
+		User user = userRepository.loginUser(toLogin.getUsername(), toLogin.getPassword());
+//				.orElseThrow(() -> new ResourceNotFoundException("No user with these credentials"));
+		if(user == null)
+			throw new ResourceNotFoundException("No user with these credentials");
+		return ResponseEntity.ok().body(user);
+	}
+	
 	@GetMapping("/users")
 	public List<User> getAllPosts() {
 		return userRepository.findAll();
@@ -56,7 +66,7 @@ public class UserController {
 				@Valid @RequestBody User userDetails) throws ResourceNotFoundException {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with this id: " + userId));
-		user.setUserName(userDetails.getUserName());
+		user.setUsername(userDetails.getUsername());
 		user.setPassword(userDetails.getPassword());
 		user.setEmail(userDetails.getEmail());
 		User updatedUser = userRepository.save(user);
