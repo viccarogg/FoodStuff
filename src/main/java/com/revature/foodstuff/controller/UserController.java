@@ -29,8 +29,9 @@ import com.revature.foodstuff.repository.UserRepository;
 //@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api")
 public class UserController {
+	
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 	
 	@GetMapping("/users")
 	public List<User> getAllPosts() {
