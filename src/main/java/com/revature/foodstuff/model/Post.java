@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -47,7 +48,8 @@ public class Post {
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private User userId;
 
-	@JsonManagedReference
+	//@JsonManagedReference
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
 	private List<Comment> comments = new ArrayList<Comment>();
 
