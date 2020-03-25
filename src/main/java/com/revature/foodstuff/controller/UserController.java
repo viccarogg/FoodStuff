@@ -1,5 +1,6 @@
 package com.revature.foodstuff.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,19 @@ public class UserController {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with this id: " + userId));
 		return ResponseEntity.ok().body(user);
+	}
+	
+	@GetMapping("/users/followers/{id}")
+	public List<User> getFollowers(@PathVariable(value = "id") Long userId) {
+		List<User> temp = userRepository.getFollowers(userId);
+		List<User> result = new ArrayList<User>();
+		for(User user : temp) {
+			User newUser = new User();
+			newUser.setUserId(user.getUserId());
+			newUser.setUsername(user.getUsername());
+			result.add(newUser);
+		}
+		return result;
 	}
 	
 	@PostMapping("/users")

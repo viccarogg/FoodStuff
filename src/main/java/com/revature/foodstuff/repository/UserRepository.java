@@ -15,4 +15,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 		   nativeQuery=true)
     public User loginUser(@Param("username") String userName, @Param("password") String password);
 	
+	@Query(value="select U.USER_ID, U.USERNAME, u.password, u.email from USERS u " + 
+			"inner join FOLLOWERS f " + 
+			"on u.user_id = f.follower_id " + 
+			"where f.user_id = :userId", nativeQuery = true)
+	public List<User> getFollowers(@Param("userId") Long userId);
+	
 }
