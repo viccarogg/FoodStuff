@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
 
@@ -19,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "comments")
-@Transactional
+//@Transactional
 public class Comment {
 	
 	
@@ -28,11 +29,13 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long commentId;
 	
+	
 	@Column(name = "user_id")
 	private Long userId;
 
 
 	@JsonBackReference
+	//@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
