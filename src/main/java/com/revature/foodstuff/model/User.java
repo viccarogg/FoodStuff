@@ -15,7 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
+
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Entity
 @Table(name = "USERS")
@@ -66,6 +68,7 @@ public class User {
 		this.email = email;
 	}
 
+	
 	public Long getUserId() {
 		return userId;
 	}
