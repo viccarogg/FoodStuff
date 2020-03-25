@@ -48,8 +48,8 @@ public class Post {
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private User userId;
 
-	//@JsonManagedReference
-	@JsonBackReference
+	@JsonManagedReference
+	//@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
 	private List<Comment> comments = new ArrayList<Comment>();
 

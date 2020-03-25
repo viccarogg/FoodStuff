@@ -34,8 +34,8 @@ public class Comment {
 	private Long userId;
 
 
-	//@JsonBackReference
-	@JsonManagedReference
+	@JsonBackReference
+	//@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
