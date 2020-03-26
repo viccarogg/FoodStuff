@@ -47,7 +47,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/users")
-	public List<User> getAllPosts() {
+	public List<User> getAllUsers() {
 		return userRepository.findAll();
 	}
 	
@@ -57,6 +57,11 @@ public class UserController {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with this id: " + userId));
 		return ResponseEntity.ok().body(user);
+	}
+	
+	@PostMapping("/users")
+	public User createUser(@RequestBody User user) {
+		return userRepository.save(user);
 	}
 	
 	@GetMapping("/users/followers/{id}")
@@ -86,11 +91,6 @@ public class UserController {
 		return result;
 	}
 	
-	@PostMapping("/users")
-	public User createUser(@RequestBody User user) {
-		return userRepository.save(user);
-	}
-	
 	
 	@PostMapping("/follow")
 	public Map<String, Boolean> follow(@RequestBody  Map<String, Long> body){
@@ -108,6 +108,7 @@ public class UserController {
 		response.put("Unfollowed", Boolean.TRUE);
 		return response;
 	}
+	
 	@PostMapping("/save")
 	public Map<String, Boolean> savePost(@RequestBody  Map<String, Long> body) {
 		
@@ -129,7 +130,7 @@ public class UserController {
 	
 
 	@PutMapping("/users/{id}")
-	public ResponseEntity<User> updatePost(@PathVariable(value="id") Long userId,
+	public ResponseEntity<User> updateUser(@PathVariable(value="id") Long userId,
 				@Valid @RequestBody User userDetails) throws ResourceNotFoundException {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with this id: " + userId));
