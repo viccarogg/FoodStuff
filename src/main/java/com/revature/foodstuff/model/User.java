@@ -15,7 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
+
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Entity
 @Table(name = "USERS")
@@ -24,7 +26,7 @@ public class User {
 	
 	
 	@Id
-	@Column
+	@Column(name ="user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userId;
 
@@ -54,6 +56,18 @@ public class User {
 	
 	@ManyToMany(mappedBy="followers")
 	private List<User> following = new ArrayList<User>();
+	
+
+	public User() { }
+
+	public User(Long userId, String username, String password, String email) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+
 	
 	public Long getUserId() {
 		return userId;

@@ -16,20 +16,25 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
 
+import org.springframework.transaction.annotation.Transactional;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "POSTS")
 @Transactional
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="postId")
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "POST_ID")
 	private Long postId;
 
-	@Column(name = "CONTENT", nullable = false)
+	@Column(name = "CONTENT", nullable = false, length = 4000)
 	private String content;
 	
 	@Column(name = "TITLE", nullable=false)
@@ -47,7 +52,8 @@ public class Post {
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private User userId;
 
-	@JsonManagedReference
+	
+	//@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
 	private List<Comment> comments = new ArrayList<Comment>();
 

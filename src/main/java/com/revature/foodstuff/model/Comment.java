@@ -8,18 +8,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
+
 
 import org.springframework.context.annotation.Lazy;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 
 @Entity
 @Table(name = "comments")
 @Transactional
+//@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="post")
 public class Comment {
 	
 	
@@ -28,13 +35,16 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long commentId;
 	
+	
 	@Column(name = "user_id")
 	private Long userId;
 
 
-	@JsonBackReference
+	
+	//@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="post_id")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Post post;
 	
 	

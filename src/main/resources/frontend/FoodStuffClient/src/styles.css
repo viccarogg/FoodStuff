@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+.navbar{
+    background-color:#1DA1F2;   
+}
+
+a{
+    color: rgb(255, 255, 255);    
+}
+
+
+#FeedsDiv { 
+    padding:50px; 
+    background:rgb(127, 156, 236);
+    position:relative;
+     top:100px ;
+     height:600px;
+     width: 60%;    
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 100px;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     font-weight: bold;
+     /* border-radius: 25px; */
+    }
+
+#contentDiv{
+    padding:10px; 
+    background:rgb(177, 96, 96);
+    border-radius: 25px;
+    }
+
+#txtcomment
+{
+    border-radius: 25px;  
+}

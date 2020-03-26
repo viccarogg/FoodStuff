@@ -27,8 +27,8 @@ import com.revature.foodstuff.repository.CommentRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*")
-//@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 public class CommentController {
 
 	@Autowired
@@ -65,7 +65,7 @@ public class CommentController {
 		return ResponseEntity.ok(updatedComment);
 	}
 
-	@DeleteMapping("/comments/id")
+	@DeleteMapping("/comments/{id}")
 	public Map<String, Boolean> deleteComment(@PathVariable(value = "id") Long commentId)
 			throws ResourceNotFoundException {
 		Comment comment = commentRepository.findById(commentId)
