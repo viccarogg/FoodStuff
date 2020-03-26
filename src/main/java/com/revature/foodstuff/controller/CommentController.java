@@ -65,7 +65,7 @@ public class CommentController {
 		return ResponseEntity.ok(updatedComment);
 	}
 
-	@DeleteMapping("/comments/id")
+	@DeleteMapping("/comments/{id}")
 	public Map<String, Boolean> deleteComment(@PathVariable(value = "id") Long commentId)
 			throws ResourceNotFoundException {
 		Comment comment = commentRepository.findById(commentId)

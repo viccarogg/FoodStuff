@@ -1,6 +1,8 @@
+import { Comment } from './models/comment';
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable, Observer } from 'rxjs';
+
 
 
 @Injectable({
@@ -17,19 +19,19 @@ export class CommentService {
   }
 
   getCommentsByPostId(postId: number): Observable<object> {
-    return this.http.get(`${this.baseUrl}/posts/${postId}`);
+    return this.http.get(`${this.baseUrl}/post/${postId}`);
   }
 
-  createComment(comment: object): Observable<object> {
-    return this.http.get(`${this.baseUrl}`, comment);
+  createComment(comment: Comment): Observable<object> {
+    return this.http.post(`${this.baseUrl}`, comment);
   }
 
-  updateComment(commentDetails: object, commentId: number): Observable<object> {
-    return this.http.get(`${this.baseUrl}/${commentId}`, commentDetails);
+  updateComment(commentDetails: Comment, commentId: number): Observable<object> {
+    return this.http.put(`${this.baseUrl}/${commentId}`, commentDetails);
   }
 
   deleteComment(commentId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${commentId}`, {responseType: 'text' });
+    return this.http.delete(`${this.baseUrl}/${commentId}`, {responseType: 'text' });
   }
 
 

@@ -1,3 +1,4 @@
+import { Post } from './models/post';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -28,11 +29,11 @@ export class PostService {
     return this.http.get(`${this.baseUrl}/saved/${id}`)
   }
 
-  createPost(post:Object) : Observable<Object> {
+  createPost(post: Post) : Observable<Object> {
     return this.http.post(this.baseUrl, post);
   }
 
-  updatePost(id:number, post:Object) : Observable<Object> {
+  updatePost(id:number, post: Post) : Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, post);
   }
 

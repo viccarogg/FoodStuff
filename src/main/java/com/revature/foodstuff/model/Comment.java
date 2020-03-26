@@ -16,12 +16,17 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 
 @Entity
 @Table(name = "comments")
 @Transactional
+//@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="post")
 public class Comment {
 	
 	
@@ -36,9 +41,10 @@ public class Comment {
 
 
 	
-	@JsonManagedReference
+	//@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="post_id")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Post post;
 	
 	
