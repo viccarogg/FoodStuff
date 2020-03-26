@@ -32,7 +32,9 @@ export class ServiceUsersService {
   getFollowers(userid: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/users/followers/${userid}`);
   }
-
+  
+  // get post of followees  get post by ID  for each followees
+  // use User Object then loop Postobject
   getFollowees(userId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/users/followees/${userId}`);
   }
