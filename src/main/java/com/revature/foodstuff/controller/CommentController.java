@@ -27,8 +27,8 @@ import com.revature.foodstuff.repository.CommentRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*")
-//@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 public class CommentController {
 
 	@Autowired

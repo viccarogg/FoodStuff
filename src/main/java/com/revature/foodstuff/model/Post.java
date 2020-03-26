@@ -16,7 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -30,7 +31,7 @@ public class Post {
 	@Column(name = "POST_ID")
 	private Long postId;
 
-	@Column(name = "CONTENT", nullable = false)
+	@Column(name = "CONTENT", nullable = false, length = 4000)
 	private String content;
 	
 	@Column(name = "TITLE", nullable=false)
@@ -48,8 +49,8 @@ public class Post {
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private User userId;
 
-	@JsonManagedReference
-	//@JsonBackReference
+	
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
 	private List<Comment> comments = new ArrayList<Comment>();
 

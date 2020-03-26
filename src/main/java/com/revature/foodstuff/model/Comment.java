@@ -10,9 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
+
 
 import org.springframework.context.annotation.Lazy;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "comments")
-//@Transactional
+@Transactional
 public class Comment {
 	
 	
@@ -34,8 +35,8 @@ public class Comment {
 	private Long userId;
 
 
-	@JsonBackReference
-	//@JsonManagedReference
+	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private Post post;
