@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { LoginComponent } from './login/login.component';
+import { HomepageComponent } from './homepage/homepage.component';
+
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     CreateUserComponent,
     ViewUserComponent,
-    LoginComponent
+    LoginComponent,
+    HomepageComponent
+
   ],
   imports: [
     BrowserModule,
