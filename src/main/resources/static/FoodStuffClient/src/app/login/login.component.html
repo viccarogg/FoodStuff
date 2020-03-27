@@ -1,7 +1,7 @@
 
 
-<h2>Login</h2>
 <form [formGroup]="loginForm" >
+    <h2>Login</h2>
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" formControlName="username" class="form-control" />
@@ -12,5 +12,6 @@
     </div>
     <div>
       <button type="submit" onclick="login()">Login</button>
+      <button class="register" type="button" routerLink="add" routerLinkActive="active">Register</button>
     </div>
 </form>
