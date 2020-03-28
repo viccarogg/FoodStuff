@@ -1,1 +1,34 @@
 <p>view-user works!</p>
+
+<p>id: {{user.userId}} </p>
+<p>username: {{user.username}}</p>
+
+<h1>Posts</h1>
+<ul>
+    <li *ngFor="let post of posts">
+        {{post.title}}
+    </li>
+</ul>
+
+<h1>Saved Posts</h1>
+<ul>
+    <li *ngFor="let save of savedPosts">
+        {{save.title}}
+    </li>
+</ul>
+
+Followers: <a href="#">{{followers.length}}</a>
+
+Following: <a href="#">{{following.length}}</a>
+
+<ul>
+    <li *ngFor="let p of allPost">
+        {{p.title}} <br/>
+        {{p.content}} <br>
+        {{p.userId.userId}}
+    </li>
+</ul>
+
+
+/posts/cuid/fid
+
