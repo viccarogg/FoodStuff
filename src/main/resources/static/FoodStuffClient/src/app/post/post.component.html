@@ -1,55 +1,49 @@
 
 
-<!-- <div *ngIf="allPosts">
-    <ul *ngFor="let post of allPosts">
-     <li>{{post.postId}}</li>
-   </ul>
-  </div> -->
-
-
-
-<div class="container-fluid col-6" >
-<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+<div class="container-fluid col-6" *ngIf="post && saved && followees">
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
     <ngb-panel>
-        <ng-template ngbPanelHeader>
-          <div class="d-flex align-items-center justify-content-between">
-            <h5 class="m-0">This will Be some recipe name</h5>
-            <div>
-              <button ngbPanelToggle class="btn btn-sm btn-outline-primary ml-2">View Recipe</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary ml-2" >
-                Save Post
-              </button>
-              <button type="button" class="btn btn-sm btn-outline-danger ml-2"  >Follow</button>
-              <button type="button" class="btn btn-sm btn-outline-danger ml-2" (click)="unfollow()" >Unfollow</button>
-            </div>
+      <ng-template ngbPanelHeader>
+        <div class="d-flex align-items-center justify-content-between">
+          <h5 class="m-0"  >{{ post.title }}</h5>
+          <div>
+            <button ngbPanelToggle class="btn btn-sm btn-outline-primary ml-2">View Recipe</button>
+            <button *ngIf="checkIfSaved(post.postId); else elseSaveBlock" type="button"
+              class="btn btn-sm btn-outline-secondary ml-2" (click)="unsavePost(post.postId)">Unsave
+              Post</button>
+            <ng-template #elseSaveBlock>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2" (click)="savePost(post.postId)">Save
+                Post</button>
+            </ng-template>
+
+            <button *ngIf="checkIfFollowing(post.userId.userId); else elseFollBlock" type="button"
+              class="btn btn-sm btn-outline-danger ml-2" (click)="unfollow(post.userId.userId)">Unfollow</button>
+            <ng-template #elseFollBlock>
+              <button type="button" class="btn btn-sm btn-outline-danger ml-2"
+                (click)="follow(post.userId.userId)">Follow</button>
+            </ng-template>
+
           </div>
-        </ng-template>
-       
-            
-       
-        <ng-template ngbPanelContent >
-            <div class="container border border-primary rounded">
-                
-            
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-          aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-          sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-          labore sustainable VHS.
+        </div>
+      </ng-template>
+
+
+
+      <ng-template ngbPanelContent>
+        <div class="container border border-primary rounded">
+          {{post.content}}
         </div>
         <div>
-            this box is going to be to load the comments
+
+          this box is going to be to load the comments
         </div>
-              
-          
-        </ng-template>
-    
 
-        
-      </ngb-panel>
-    
-</ngb-accordion>
+
+      </ng-template>
+
+
+
+    </ngb-panel>
+
+  </ngb-accordion>
 </div>
-
-

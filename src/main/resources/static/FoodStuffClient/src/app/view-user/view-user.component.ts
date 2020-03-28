@@ -40,9 +40,7 @@ export class ViewUserComponent implements OnInit {
     this.postService.getAllPosts().subscribe(data => this.allPost = data);
 
     this.postService.getPostsByUser(this.route.snapshot.params.id).subscribe(posts => {
-      console.log(typeof(this.allPost))
-      
-      console.log(this.allPost)
+
       this.posts = posts;
     });
 

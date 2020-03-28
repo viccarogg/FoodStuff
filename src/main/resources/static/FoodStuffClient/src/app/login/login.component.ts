@@ -3,6 +3,7 @@ import { ServiceUsersService } from './../service-users.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,21 +12,27 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  user: User;
-
+  model = {"username": "", "password":""};
+  
 
   constructor(private serviceUsersService: ServiceUsersService) { }
 
   ngOnInit() {
   }
 
-  login(username, password) {
-    this.serviceUsersService.login({username, password})
+  login() {
+    console.log(this.model.username)
+    console.log(this.model.password)
+    this.serviceUsersService.login(this.model)
       .subscribe(data => {
-        console.log(data)
-        this.user = data;
-      }, error => console.log(error));
+        sessionStorage.setItem("currentUserId", data.userId);
+        sessionStorage.setItem("username", data.username);
+        sessionStorage.setItem("email", data.email);
+      }, error => {
+        console.log(error);
+      })
   }
+
 
 
 }
