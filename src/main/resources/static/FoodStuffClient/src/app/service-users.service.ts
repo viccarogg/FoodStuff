@@ -39,8 +39,10 @@ export class ServiceUsersService {
     return this.http.get(`${this.baseUrl}/users/followees/${userId}`);
   }
 
-  follow(body: {followId: number, currentUserId: number}): Observable<any> {
+  follow(body: {followId: any, currentUserId: number}): Observable<any> {
+    console.log(body);
     return this.http.post(`${this.baseUrl}/follow`, body, { responseType: 'text' });
+
   }
 
   unfollow(followId: number, currentUserId: number): Observable<any> {

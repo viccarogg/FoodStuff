@@ -6,6 +6,7 @@ import { ServiceUsersService } from '../service-users.service';
 import { Post } from '../models/post';
 import { User } from '../models/user';
 import { Comment } from '../models/comment';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class PostComponent implements OnInit {
 
   params: { followId: 1, currentUserId: 3}
 
-  constructor(private postService: PostService, private userService: ServiceUsersService) { }
+  constructor(private postService: PostService, private userService: ServiceUsersService,
+    private route: ActivatedRoute) { }
 
   user: User
 
@@ -29,44 +31,29 @@ export class PostComponent implements OnInit {
 
   allPosts: Post[];
 
-  
+  followed: any;
+
+
+
+
 
   ngOnInit(): void {
 
+    // this.postService.getAllPosts().subscribe( posts => {
+    //   this.allPosts = posts;
+
+    // })
     
 
   }
 
-  
-//   getAllPosts() {
-//     this.postService.getAllPosts()
-//       .subscribe((data: { Post}) => this.post = {
+  follow(cid, fid) {
 
-        
-//         "postId": data["postId"],
-//         "title": data["title"],
-//         "content": data ["content"],
-//         "userId": data ["userId"],
-//         "comments": [
-//           "commentId",  data["commentId"],
-//           "userId", data["userId"],
-//           "postId", data["post"],
-//           "comments", data["comments"],
-//           "flag", data["flag"]
-//         ]
+    this.userService.follow({"currentUserId": cid, "followId": fid})
+      .subscribe(followed => {
+        this.followed = followed;
 
-//       });
-//     window.alert(this.post);
-
-// }
-
-  follow() {
-    this.userService.follow(this.params)
-      .subscribe((data: Object) => this.response = {
-        followed: data['followed']
-      });
-
-    window.alert("followed");
+      })
   }
 
 
