@@ -3,5 +3,5 @@ export class Post {
     content:string;
     title:string;
     userId:number;
-    comments:number[]
+    comments:Comment[]
 }
