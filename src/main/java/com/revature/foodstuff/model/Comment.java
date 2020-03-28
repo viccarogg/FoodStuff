@@ -36,8 +36,11 @@ public class Comment {
 	private Long commentId;
 	
 	
-	@Column(name = "user_id")
-	private Long userId;
+	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	//@JsonIdentityReference(alwaysAsId = true)
+	private User userId;
 
 
 	
@@ -62,11 +65,11 @@ public class Comment {
 		this.commentId = commentId;
 	}
 
-	public Long getUserId() {
+	public User getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(User userId) {
 		this.userId = userId;
 	}
 
