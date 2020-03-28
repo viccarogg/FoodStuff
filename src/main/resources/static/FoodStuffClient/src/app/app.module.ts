@@ -12,6 +12,9 @@ import { ViewUserComponent } from './view-user/view-user.component';
 import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
+import { NavbarComponent } from './navbar/navbar.component';
+
+
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     CreateUserComponent,
     ViewUserComponent,
     LoginComponent,
-    HomepageComponent
+    HomepageComponent,
+    NavbarComponent
+
 
   ],
   imports: [
