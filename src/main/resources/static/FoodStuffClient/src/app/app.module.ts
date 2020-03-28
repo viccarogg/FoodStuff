@@ -6,11 +6,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
+
 import { NavbarComponent } from './navbar/navbar.component';
+
 
 
 
@@ -22,6 +25,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     HomepageComponent,
     NavbarComponent
+
 
   ],
   imports: [
