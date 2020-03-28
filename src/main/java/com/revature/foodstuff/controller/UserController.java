@@ -55,10 +55,22 @@ public class UserController {
 	public ResponseEntity<User> getUserByID(@PathVariable(value = "id") Long userId)
 		throws ResourceNotFoundException {
 		User user = userRepository.findById(userId)
-				.orElseThrow(() -> new ResourceNotFoundException("User not found with this id: " + userId));
+			.orElseThrow(() -> new ResourceNotFoundException("User not found with this id: " + userId));
 		return ResponseEntity.ok().body(user);
 	}
 	
+	// added by ryan  
+	@PostMapping("/users/email/{email}")
+	public ResponseEntity<User> getUserByEmail(@PathVariable(value = "email") String email)
+		throws ResourceNotFoundException {
+		User user = userRepository.getEmail(email);
+		if(user == null)
+			throw new ResourceNotFoundException("User not found with this email: " + email);
+		return ResponseEntity.ok().body(user);
+	}
+	
+	
+
 	@PostMapping("/users")
 	public User createUser(@RequestBody User user) {
 		return userRepository.save(user);
