@@ -13,31 +13,45 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPosts() {
+  getAllPosts(): Observable<any> {
     return this.http.get(this.baseUrl);
   }
 
-  getPost(id:number) : Observable<any> {
+  getPost(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`)
   }
 
-  getPostsByUser(id:number) : Observable<any> {
+  getPostsByUser(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/user/${id}`)
   }
 
-  getSavedPostsForUser(id:number) : Observable<any> {
+  getSavedPostsForUser(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/saved/${id}`)
   }
 
-  createPost(post: Post) : Observable<Object> {
+  createPost(post: Post): Observable<Object> {
     return this.http.post(this.baseUrl, post);
   }
 
-  updatePost(id:number, post: Post) : Observable<Object> {
+  updatePost(id: number, post: Post): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, post);
   }
 
   deletePost(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  }
+
+  async getPostsByFollowing(followees: any) {
+    let result = [];
+    for (let user of followees) {
+      console.log(user)
+      const data = await this.getPostsByUser(user.userId).toPromise();
+      // subscribe(posts => {
+      //   console.log(posts)
+      console.log(data)
+      result = result.concat(data);
+    }
+    console.log(result)
+    return result;
   }
 }

@@ -1,17 +1,17 @@
 
 
-<form [formGroup]="loginForm" >
+<form #form='ngForm' ngNativeValidate >
     <h2>Login</h2>
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" />
+        <input name="username" type="text" class="form-control" required [(ngModel)]="model.username"/>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control"/>
+        <input name="password" type="password" class="form-control" required [(ngModel)]="model.password" />
     </div>
     <div>
-      <button type="submit" onclick="login()">Login</button>
+      <button type="submit" (click)="login()" routerLink="/home">Login</button>
       <button class="register" type="button" routerLink="add" routerLinkActive="active">Register</button>
     </div>
 </form>

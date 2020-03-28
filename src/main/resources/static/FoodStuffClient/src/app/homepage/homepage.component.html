@@ -3,7 +3,14 @@
  
 <p>homepage works!</p>
 
-<app-post></app-post>
+<!-- <app-post postId=5></app-post> -->
+
+<div *ngIf="postsToDisplay && postsToDisplay.length > 0">
+    <div *ngFor="let post of postsToDisplay">
+        <p>{{post.title}}</p>
+        <!-- <app-post [(ngModel)]=post.postId></app-post> -->
+    </div>
+</div>
 
 
 <!-- <div id='FeedsDiv' >

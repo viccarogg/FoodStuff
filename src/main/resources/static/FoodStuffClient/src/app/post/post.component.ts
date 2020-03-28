@@ -7,16 +7,20 @@ import { Post } from '../models/post';
 import { User } from '../models/user';
 import { Comment } from '../models/comment';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-post',
+  inputs: ['postId'],
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  postId: number;
 
-  params: { followId: 1, currentUserId: 3}
+
+  params: { followId: 1, currentUserId: 3 }
 
   constructor(private postService: PostService, private userService: ServiceUsersService,
     private route: ActivatedRoute) { }
@@ -29,37 +33,45 @@ export class PostComponent implements OnInit {
 
   post: Post;
 
-  allPosts: Post[];
+  allPosts: any;
+  saved: any[];
+  followees: any;
 
-  followed: any;
-
-
-
-
+  cid = Number(sessionStorage.getItem("currentUserId"));
 
   ngOnInit(): void {
 
-    // this.postService.getAllPosts().subscribe( posts => {
-    //   this.allPosts = posts;
+    this.postService.getAllPosts().subscribe(posts => {
+      this.allPosts = posts;
+    })
 
-    // })
-    
+    this.postService.getPost(this.postId).subscribe(post => {
+      this.post = post;
+    })
+
+    this.userService.getFollowees(this.cid).subscribe(followees => {
+      this.followees = followees;
+    })
+
+    this.postService.getSavedPostsForUser(this.cid).subscribe(savedPosts => {
+      this.saved = savedPosts;
+    })
 
   }
 
-  follow(cid, fid) {
-
-    this.userService.follow({"currentUserId": cid, "followId": fid})
+  follow(fid) {
+    console.log(fid);
+    this.userService.follow({ "currentUserId": this.cid, "followId": fid })
       .subscribe(followed => {
-        this.followed = followed;
+        console.log("succeess/fail msg")
 
       })
   }
 
 
 
-  unfollow() {
-    this.userService.unfollow(1, 3)
+  unfollow(fid) {
+    this.userService.unfollow(fid, this.cid)
       .subscribe((data: Object) => this.response = {
         unfollowed: data['unfollowed']
       });
@@ -68,11 +80,31 @@ export class PostComponent implements OnInit {
 
   }
 
-  // savePost(body: { userId: number, postId: number }): Observable<any> {
-  //   return this.http.post(`${this.baseUrl}/save`, body, { responseType: 'text' });
-  // }
+  savePost(pid) {
+    console.log(pid);
+    this.userService.savePost({ "userId": this.cid, "postId": pid })
+      .subscribe(saved => {
+        console.log("success!")
+      })
+  }
 
-  // unSavePost(userId: number, postId: number): Observable<any> {
+  unsavePost(pid: number) {
+    this.userService.unSavePost(this.cid, pid).subscribe(unsave => {
+      console.log("post unsaved :(")
+    })
+  }
 
-  // }
+  checkIfFollowing(id) {
+      for (let u of this.followees)
+        if (u.userId == id)
+          return true;
+    return false;
+  }
+  checkIfSaved(id) {
+    console.log(this.saved);
+    for (let p of this.saved)
+        if (p.postId == id)
+          return true;
+    return false;
+  }
 }

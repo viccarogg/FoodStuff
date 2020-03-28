@@ -1,7 +1,9 @@
+import { User } from './user';
+
 export class Post {
     postId:number;
     content:string;
     title:string;
-    userId:number;
+    userId: User;
     comments:Comment[]
 }
