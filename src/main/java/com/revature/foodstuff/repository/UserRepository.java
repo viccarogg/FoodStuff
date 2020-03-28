@@ -29,6 +29,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			"where f.follower_id = :userId", nativeQuery=true)
 	public List<User> getFollowees(@Param("userId") Long userId);
 	
+	// added by ryan
+	@Query(value="select U.USER_ID, U.USERNAME, u.password, u.email from USERS u " +  
+			"where u.email = :email", nativeQuery=true)
+	public User getEmail(@Param("email") String email);
+	
 	@Transactional
 	@Modifying(clearAutomatically= true)
 	@Query(value="insert into user_saved_posts VALUES (:userId, :postId)", nativeQuery=true)

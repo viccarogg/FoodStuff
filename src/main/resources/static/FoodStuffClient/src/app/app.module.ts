@@ -16,6 +16,9 @@ import { PostComponent } from './post/post.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostService } from './post.service';
 
+import { NavbarComponent } from './navbar/navbar.component';
+
+
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { PostService } from './post.service';
     LoginComponent,
     HomepageComponent,
     PostComponent,
-    
+    NavbarComponent
+
 
   ],
   imports: [
