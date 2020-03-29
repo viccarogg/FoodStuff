@@ -16,6 +16,10 @@ export class ServiceUsersService {
     return this.http.post(`${this.baseUrl}/login`, credentials );
   }
 
+  sendEmail(email: any): Observable<any> {
+    return this.http.post(`http://localhost:9090/simpleemail`, email);
+  }
+
   getAllUsers(): Observable<any> {
     return this.http.get(`${this.baseUrl}/users`);
   }
