@@ -1,40 +1,13 @@
 
 <app-navbar></app-navbar>
  
+<h1 class="text-center">Welcome back {{username}}</h1>
+<div class="container mt-3 col-md-12">
+<div *ngFor="let post of postsToDisplay" class="mt-3">
+    <div class="mx-3">
+    <app-post postId="{{post.postId}}"></app-post>
 
-
-<app-post postId=5></app-post>
-
-<div *ngFor="let post of postsToDisplay">
-    {{post.postId}}
+</div>
+</div>
 </div>
 
-<!-- <ul **ngFor="let post of postsToDisplay">
-<li>{{post.postId}}</li>
-</ul>
-
-
-<ul *ngIf="postsToDisplay && postsToDisplay.length > 0">
-<li *ngFor="let post of postsToDisplay">
-    <div >
-        <p>{{post.title}}</p>
-        <app-post [(ngModel)]=post.postId></app-post>
-    </div>
-</li>
-</ul> -->
-
-
-<!-- <div id='FeedsDiv' >
-    <div id='contentDiv'>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.</p>
-    </div>
-    <br>
-    <br>
-    Comments<br>
-    
-    <form>
-    
-       <input id="txtcomment"  type="text" name="addcomment"> &nbsp;
-       <button type="submit" class="btn btn-secondary btn-sm" id="btnComment">Submit</button> 
-    </form>
-</div>   -->
