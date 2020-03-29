@@ -1,42 +1,32 @@
-
 <app-navbar></app-navbar>
 
 <div class="ml-3">
-<p>view-user works!</p>
 </div>
 <!-- <p>id: {{user.userId}} </p> -->
 <div class="ml-3">
-<p>username: {{user.username}}</p>
+    <h3>Welcome {{user.username}}</h3>
+    <h5>
+        <div class="ml-3">
+            Followers: <a href="#">{{followers.length}}</a>
+
+            Following: <a href="#">{{following.length}}</a>
+        </div>
+    </h5>
 </div>
 <div class="ml-3">
-<h1 >Posts</h1>
-<ul>
-    <li *ngFor="let post of posts">
-        {{post.title}}
-    </li>
-</ul>
-</div>
+    <h1 class="text-center">Posts</h1>
+    <div *ngFor="let post of postsToDisplay">
+        <div class="mx-3">
+            <app-post postId="{{post.postId}}"></app-post>
 
-<div class="ml-3">
-<h1>Saved Posts</h1>
+        </div>
+    </div>
 
-<ul>
-    <li *ngFor="let save of savedPosts">
-        {{save.title}}
-    </li>
-</ul>
-</div>
+    <div class="ml-3">
+        <h1 class="text-center">Saved Posts</h1>
 
-<div class="ml-3">
-Followers: <a href="#">{{followers.length}}</a>
-
-Following: <a href="#">{{following.length}}</a>
-</div>
-<div>
-<ul>
-    <li *ngFor="let p of allPost">
-        {{p.title}} <br/>
-        {{p.content}} <br>
-        {{p.userId.userId}}
-    </li>
-</ul></div>
+        <div *ngFor="let post of savedPosts">
+            <div class="mx-3">
+                <app-post postId="{{post.postId}}"></app-post>
+            </div>
+        </div>

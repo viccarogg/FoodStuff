@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { ServiceUsersService } from '../service-users.service'
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,9 +15,9 @@ export class NavbarComponent implements OnInit {
 
   searchParam:string;
 
-  cid = Number(sessionStorage.getItem("currentUserId"));
+  // cid = Number(sessionStorage.getItem("currentUserId"));
 
-  // cid: any;
+   cid: any;
 
 
   constructor(private userService: ServiceUsersService,
@@ -46,4 +47,6 @@ export class NavbarComponent implements OnInit {
     // this.save();  
     this.userSearch();  
   }
+
+
 }

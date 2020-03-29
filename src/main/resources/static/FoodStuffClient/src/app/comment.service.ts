@@ -22,7 +22,7 @@ export class CommentService {
     return this.http.get(`${this.baseUrl}/post/${postId}`);
   }
 
-  createComment(comment: Comment): Observable<object> {
+  createComment(comment: any): Observable<object> {
     return this.http.post(`${this.baseUrl}`, comment);
   }
 

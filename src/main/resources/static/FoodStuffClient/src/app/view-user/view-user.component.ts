@@ -17,6 +17,9 @@ export class ViewUserComponent implements OnInit {
   savedPosts: Post[];
   followers: User[];
   following: User[];
+  userId: number;
+  postsToDisplay: any;
+  
 
   allPost: any;
 
@@ -25,6 +28,9 @@ export class ViewUserComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.userId = Number(sessionStorage.getItem("currentUserId"));
+
     this.userService.getUserById(this.route.snapshot.params.id).subscribe(u => {
       this.user = u;
     });
@@ -48,6 +54,9 @@ export class ViewUserComponent implements OnInit {
     this.postService.getSavedPostsForUser(this.route.snapshot.params.id).subscribe(savedPosts => {
       this.savedPosts = savedPosts;
     });
+
+
+    this.postService.getPostsByUser(this.userId).subscribe(posts => this.postsToDisplay = posts);
 
 
   }

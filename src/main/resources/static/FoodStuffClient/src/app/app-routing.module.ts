@@ -15,8 +15,8 @@ const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
 {path: 'register', component: CreateUserComponent},
 { path: 'users/:id', component: ViewUserComponent },
 { path: 'allusers', component: ListUsersComponent },
-{path: 'login', component: LoginComponent},
-{path: 'cpost', component: NgbdModalConfig},
+{path: 'login', component: LoginComponent}
+
 
 ];
 

@@ -2,6 +2,7 @@ import { User } from './../models/user';
 import { ServiceUsersService } from './../service-users.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   model = {"username": "", "password":""};
   
 
-  constructor(private serviceUsersService: ServiceUsersService) { }
+  constructor(private serviceUsersService: ServiceUsersService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,9 +29,12 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("currentUserId", data.userId);
         sessionStorage.setItem("username", data.username);
         sessionStorage.setItem("email", data.email);
+        
       }, error => {
         console.log(error);
       })
+      this.router.navigate(['/home'])
+      
   }
 
 
