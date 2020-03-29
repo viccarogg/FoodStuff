@@ -11,8 +11,13 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   user: User = new User();
   submitted = false;
- cid: any;
-  
+
+  searchParam:string;
+
+  cid = Number(sessionStorage.getItem("currentUserId"));
+
+  // cid: any;
+
 
   constructor(private userService: ServiceUsersService,
     private router: Router) { }
@@ -32,9 +37,13 @@ export class NavbarComponent implements OnInit {
     //   .subscribe(data => console.log(data), error => console.log(error));
     // this.user = new User();
   //  this.gotoList();
+  this.router.navigate(['/allusers']);
   }
+
+
   onSubmit() {
     // this.submitted = true;
-    // this.save();    
+    // this.save();  
+    this.userSearch();  
   }
 }
