@@ -1,0 +1,23 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create A Post!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form (ngSubmit)="onSubmit()" class="border rounded">
+    <div class="modal-body">
+
+      <label>Post Title</label>
+      <input type="text" id="title" style="margin-left: 10px;" required [(ngModel)]="post.title" name="title"/><br>
+      <label>Content</label><br>
+      <textarea id="content" rows="10" cols="63" required [(ngModel)]="post.content" name="content"></textarea>
+
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark">Post</button>
+    </div>
+  </form>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Create a post</button>
