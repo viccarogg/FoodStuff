@@ -5,12 +5,23 @@
 
 <app-post postId=5></app-post>
 
-<!-- <div *ngIf="postsToDisplay && postsToDisplay.length > 0">
-    <div *ngFor="let post of postsToDisplay">
+<div *ngFor="let post of postsToDisplay">
+    {{post.postId}}
+</div>
+
+<!-- <ul **ngFor="let post of postsToDisplay">
+<li>{{post.postId}}</li>
+</ul>
+
+
+<ul *ngIf="postsToDisplay && postsToDisplay.length > 0">
+<li *ngFor="let post of postsToDisplay">
+    <div >
         <p>{{post.title}}</p>
         <app-post [(ngModel)]=post.postId></app-post>
     </div>
-</div> -->
+</li>
+</ul> -->
 
 
 <!-- <div id='FeedsDiv' >
