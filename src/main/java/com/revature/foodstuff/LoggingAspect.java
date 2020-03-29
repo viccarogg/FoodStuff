@@ -12,7 +12,7 @@ public class LoggingAspect {
 	
 	private static final Logger LOGGER = LogManager.getLogger(LoggingAspect.class);
 	
-	@After("execution(* com.revature.foodstuff.controller.EmailController.sendEmail(..)))")
+	@After("execution(* com.revature.foodstuff.controller.EmailController.home(..)))")
 	public void checkSentEmail() {
 		
 		LOGGER.info("Email has been sent");
