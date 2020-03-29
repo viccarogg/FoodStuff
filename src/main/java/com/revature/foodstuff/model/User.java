@@ -18,10 +18,14 @@ import javax.persistence.Table;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 @Entity
 @Table(name = "USERS")
 @Transactional
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="userId")
 public class User {
 	
 	
@@ -56,6 +60,8 @@ public class User {
 	
 	@ManyToMany(mappedBy="followers")
 	private List<User> following = new ArrayList<User>();
+	
+	
 	
 
 	public User() { }

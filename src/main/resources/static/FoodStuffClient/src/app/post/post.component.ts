@@ -8,6 +8,7 @@ import { User } from '../models/user';
 import { Comment } from '../models/comment';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { CommentService } from '../comment.service';
 
 
 @Component({
@@ -22,14 +23,14 @@ export class PostComponent implements OnInit {
 
   params: { followId: 1, currentUserId: 3 }
 
-  constructor(private postService: PostService, private userService: ServiceUsersService,
+  constructor(private postService: PostService, private userService: ServiceUsersService, private commentService: CommentService,
     private route: ActivatedRoute) { }
 
   user: User
 
   response: any;
 
-  comment: Comment;
+  comment: any;
 
   post: Post;
 
@@ -39,11 +40,8 @@ export class PostComponent implements OnInit {
 
   cid = Number(sessionStorage.getItem("currentUserId"));
 
-  ngOnInit(): void {
 
-    this.postService.getAllPosts().subscribe(posts => {
-      this.allPosts = posts;
-    })
+  ngOnInit(): void {
 
     this.postService.getPost(this.postId).subscribe(post => {
       this.post = post;
@@ -55,6 +53,10 @@ export class PostComponent implements OnInit {
 
     this.postService.getSavedPostsForUser(this.cid).subscribe(savedPosts => {
       this.saved = savedPosts;
+    })
+
+    this.commentService.getCommentsByPostId(this.postId).subscribe(comments => {
+      this.comment = comments;
     })
 
   }

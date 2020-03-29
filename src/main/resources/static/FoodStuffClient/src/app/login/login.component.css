@@ -1,12 +1,16 @@
 input{
-    width: 200px;
+    /* width: 200px; */
 }
 form{
-    background-color: cadetblue;
+    /* background-color: cadetblue;
     width: 300px;
     padding-left: 50px;
+    
+    padding-bottom: 20px; */
+    background-color: cadetblue;
     margin-left: 15%;
     padding-bottom: 20px;
+    
 }
 button.register{
     margin-left: 50px;

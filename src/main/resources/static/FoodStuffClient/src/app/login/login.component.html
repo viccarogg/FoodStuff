@@ -1,8 +1,9 @@
 
 
-<form #form='ngForm' ngNativeValidate >
-    <h2>Login</h2>
-    <div class="form-group">
+<form #form='ngForm' ngNativeValidate class="col-3 mx-auto border rounded">
+    <h2 class="text-center">Login</h2>
+    <div> 
+    <div class="form-group ">
         <label for="username">Username</label>
         <input name="username" type="text" class="form-control" required [(ngModel)]="model.username"/>
     </div>
@@ -10,8 +11,10 @@
         <label for="password">Password</label>
         <input name="password" type="password" class="form-control" required [(ngModel)]="model.password" />
     </div>
-    <div>
-      <button type="submit" (click)="login()" routerLink="/home">Login</button>
-      <button class="register" type="button" routerLink="add" routerLinkActive="active">Register</button>
+    <div >
+      <button class="btn btn-light" type="submit" (click)="login()" routerLink="/home">Login</button>
+      <button class="register btn btn-light" type="button" routerLink="/register" routerLinkActive="active">Register</button>
     </div>
+</div>
 </form>
+
