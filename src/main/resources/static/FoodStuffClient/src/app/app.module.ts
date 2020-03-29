@@ -32,7 +32,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     HomepageComponent,
     PostComponent,
     NavbarComponent,
-    ListUsersComponent
+    ListUsersComponent,
     NgbdModalConfig
 
 

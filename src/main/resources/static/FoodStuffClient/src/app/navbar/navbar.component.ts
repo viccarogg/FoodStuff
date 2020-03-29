@@ -14,9 +14,9 @@ export class NavbarComponent implements OnInit {
 
   searchParam:string;
 
-  cid = Number(sessionStorage.getItem("currentUserId"));
+  // cid = Number(sessionStorage.getItem("currentUserId"));
 
-  // cid: any;
+   cid: any;
 
 
   constructor(private userService: ServiceUsersService,
