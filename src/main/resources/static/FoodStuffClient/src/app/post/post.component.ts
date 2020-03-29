@@ -31,7 +31,8 @@ export class PostComponent implements OnInit {
 
   response: any;
 
-  comment: any;
+  cid: any;
+  username: any;
 
   post: Post;
 
@@ -39,10 +40,18 @@ export class PostComponent implements OnInit {
   saved: any[];
   followees: any;
 
-  cid = Number(sessionStorage.getItem("currentUserId"));
+  comment: any;
+
+  postComment: any;
+
+  
+  
 
 
   ngOnInit(): void {
+
+    this.cid = Number(sessionStorage.getItem("currentUserId"));
+    this.username = sessionStorage.getItem("username");
 
     this.postService.getPost(this.postId).subscribe(post => {
       this.post = post;
@@ -58,6 +67,7 @@ export class PostComponent implements OnInit {
 
     this.commentService.getCommentsByPostId(this.postId).subscribe(comments => {
       this.comment = comments;
+      console.log(comments)
     })
 
   }
@@ -109,5 +119,17 @@ export class PostComponent implements OnInit {
         if (p.postId == id)
           return true;
     return false;
+  }
+
+  // user id, postid, comment 
+  createComment() {
+    console.log(this.postComment)
+    if (this.postComment == undefined || this.postComment == '') {
+      window.alert("Please dont leave empty comments.")
+    }else {
+      let newComment = {"userId": {"userId": this.cid, "username": this.username},"post": {"postId": this.post.postId}, "comments": this.postComment,"flag": 0}
+      console.log(newComment)
+    this.commentService.createComment(newComment).subscribe(data => console.log(data));
+    }
   }
 }

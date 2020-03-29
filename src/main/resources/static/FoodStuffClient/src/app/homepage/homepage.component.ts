@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ServiceUsersService } from '../service-users.service';
 import { PostService } from '../post.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -16,11 +18,11 @@ export class HomepageComponent implements OnInit {
   postsToDisplay: any;
   
 
-  constructor(private location: Location, private userService: ServiceUsersService, private postService: PostService) { }
+  constructor(private router: Router, private userService: ServiceUsersService, private postService: PostService) { }
 
   ngOnInit(): void {
     if (sessionStorage.length == 0) {
-      this.location.go('login')
+      this.router.navigate(['/home'])
     }
     else {
       this.username = sessionStorage.getItem("username");

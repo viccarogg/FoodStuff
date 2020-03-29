@@ -37,7 +37,7 @@ public class Comment {
 	
 	
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	//@JsonIdentityReference(alwaysAsId = true)
 	private User userId;

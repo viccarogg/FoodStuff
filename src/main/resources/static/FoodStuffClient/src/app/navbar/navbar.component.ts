@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { ServiceUsersService } from '../service-users.service'
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -46,4 +47,6 @@ export class NavbarComponent implements OnInit {
     // this.save();  
     this.userSearch();  
   }
+
+
 }
