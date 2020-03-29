@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+import { NgbdModalConfig } from './create-post/create-post.component'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     PostComponent,
     NavbarComponent,
     ListUsersComponent
+    NgbdModalConfig
 
 
   ],
@@ -47,6 +49,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
   providers: [
     PostService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, NgbdModalConfig],
+  exports: [NgbdModalConfig]
 })
 export class AppModule { }

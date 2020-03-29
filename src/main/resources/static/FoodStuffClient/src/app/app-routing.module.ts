@@ -5,6 +5,8 @@ import { ViewUserComponent } from './view-user/view-user.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { ListUsersComponent} from "./list-users/list-users.component";
+import { NgbdModalConfig } from './create-post/create-post.component';
+
 
 
 
@@ -14,6 +16,7 @@ const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
 { path: 'users/:id', component: ViewUserComponent },
 { path: 'allusers', component: ListUsersComponent },
 {path: 'login', component: LoginComponent},
+{path: 'cpost', component: NgbdModalConfig},
 
 ];
 
