@@ -40,7 +40,6 @@ public class UserController {
 	public ResponseEntity<User> loginUser(@RequestBody User toLogin )
 		throws ResourceNotFoundException {
 		User user = userRepository.loginUser(toLogin.getUsername(), toLogin.getPassword());
-//				.orElseThrow(() -> new ResourceNotFoundException("No user with these credentials"));
 		if(user == null)
 			throw new ResourceNotFoundException("No user with these credentials");
 		return ResponseEntity.ok().body(user);
@@ -60,7 +59,7 @@ public class UserController {
 	}
 	
 	// added by ryan  
-	@PostMapping("/users/email/{email}")
+	@GetMapping("/users/email/{email}")
 	public ResponseEntity<User> getUserByEmail(@PathVariable(value = "email") String email)
 		throws ResourceNotFoundException {
 		User user = userRepository.getEmail(email);

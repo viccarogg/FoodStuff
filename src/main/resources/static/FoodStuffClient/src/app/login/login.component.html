@@ -1,9 +1,13 @@
 
 
-<form #form='ngForm' ngNativeValidate class="col-3 mx-auto border rounded">
+<div id="divlogocontainer">
+    <img id="divlogo" src="./assets/logo2.png" alt="foodstuff">
+  </div>    
+<br>
+<form #form='ngForm' ngNativeValidate class="col-3 mx-auto border rounded" id="loginform" >
     <h2 class="text-center">Login</h2>
-    <div> 
-    <div class="form-group ">
+    <div > 
+    <div class="form-group" >
         <label for="username">Username</label>
         <input name="username" type="text" class="form-control" required [(ngModel)]="model.username"/>
     </div>

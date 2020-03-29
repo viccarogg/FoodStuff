@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostService } from './post.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
+import { ListUsersComponent } from './list-users/list-users.component';
 
 
 
@@ -29,7 +30,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     HomepageComponent,
     PostComponent,
-    NavbarComponent
+    NavbarComponent,
+    ListUsersComponent
 
 
   ],

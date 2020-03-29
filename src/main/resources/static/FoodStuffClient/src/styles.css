@@ -34,3 +34,23 @@ a{
 {
     border-radius: 25px;  
 }
+
+
+#loginform
+{
+   position:relative;  
+   top:100px;
+}
+
+#divlogo{
+    position:relative;  
+    top:50px;   
+    height:100px;
+    width: 600px;
+   left: 32%;
+
+}
+
+#divlogocontainer{
+    margin:0 auto;
+}
