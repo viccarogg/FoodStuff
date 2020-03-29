@@ -9,6 +9,7 @@ import { Comment } from '../models/comment';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { CommentService } from '../comment.service';
+import { concat } from 'rxjs';
 
 
 @Component({

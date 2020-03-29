@@ -27,6 +27,7 @@ export class CreateUserComponent implements OnInit {
     this.userService.createUser(this.user)
       .subscribe(data => console.log(data), error => console.log(error));
     this.user = new User();
+    
    // this.gotoList();
   }
   onSubmit() {
@@ -36,5 +37,15 @@ export class CreateUserComponent implements OnInit {
   // gotoList() {
   //   this.router.navigate(['/users']);
   // }
+
+  sendEmail() {
+    console.log("inside send email")
+    console.log(this.user.email)
+    this.userService.sendEmail(this.user.email)
+    .subscribe(email => {
+      console.log(email)
+      window.alert("Check Your Email!")
+    });
+  }
 
 }

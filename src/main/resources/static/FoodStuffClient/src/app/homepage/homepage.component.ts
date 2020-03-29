@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ServiceUsersService } from '../service-users.service';
 import { PostService } from '../post.service';
 
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -13,6 +14,7 @@ export class HomepageComponent implements OnInit {
   username: string;
   userId: number;
   postsToDisplay: any;
+  
 
   constructor(private location: Location, private userService: ServiceUsersService, private postService: PostService) { }
 
@@ -28,13 +30,20 @@ export class HomepageComponent implements OnInit {
 
         if (followees.length == 0) {
           this.postService.getAllPosts().subscribe(allPosts => this.postsToDisplay = allPosts);
+          console.log("Got all the post becaus following is 0")
+          console.log(this.postsToDisplay)
         }
         else {
 
-          this.postsToDisplay = this.postService.getPostsByFollowing(followees)
-          console.log(this.postsToDisplay)
-        }
+          this.postsToDisplay = this.getPostByFollowing(followees)
+          console.log("data")
+          console.log(followees)
 
+        //   this.postsToDisplay = this.postService.getPostsByFollowing(followees)
+        //             console.log("got data")
+        //             console.log(this.postsToDisplay)
+        // }
+        }
       });
     }
   }
@@ -43,4 +52,16 @@ export class HomepageComponent implements OnInit {
   //   console.log(this.postsToDisplay);
   // }
 
+  getPostByFollowing(followees: any) {
+    for (let user of followees) {
+      this.postService.getPostsByUser(user.userId)
+      
+      
+      .subscribe(posts => {
+        this.postsToDisplay = posts
+      })
+      console.log("other data")
+      console.log(followees)
+    }
+  }
 }
