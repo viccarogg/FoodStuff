@@ -41,17 +41,19 @@ export class PostService {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-  async getPostsByFollowing(followees: any) {
-    let result = [];
-    for (let user of followees) {
-      console.log(user)
-      const data = await this.getPostsByUser(user.userId).toPromise();
-      // subscribe(posts => {
-      //   console.log(posts)
-      console.log(data)
-      result = result.concat(data);
-    }
-    console.log(result)
-    return result;
-  }
+  // async getPostsByFollowing(followees: any) {
+  //   let result = [];
+  //   for (let user of followees) {
+  //     console.log('"user"')
+  //     const data = await this.getPostsByUser(user.userId).toPromise();
+  //     // subscribe(posts => {
+  //     //   console.log(posts)
+  //     console.log(data)
+  //     result = result.concat(data);
+  //   }
+  //   console.log(result)
+  //   return result;
+  // }
+
+  
 }

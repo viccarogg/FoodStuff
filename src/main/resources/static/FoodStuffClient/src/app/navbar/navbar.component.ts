@@ -11,18 +11,24 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   user: User = new User();
   submitted = false;
+
   searchParam:string;
 
   cid = Number(sessionStorage.getItem("currentUserId"));
+
+  // cid: any;
+
 
   constructor(private userService: ServiceUsersService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.cid = sessionStorage.getItem("currentUserId");
   }
 
   logout() {
     sessionStorage.clear();
+    // sessionStorage.("currentUserId");
     this.router.navigate(['/login'])
   }
 
