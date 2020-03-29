@@ -1,5 +1,9 @@
-<nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">Foodstuff</a>
+
+
+<div class="container col-12 ">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary rounded ">
+  <h4>FoodStuff</h4>
+    <!-- <a class="navbar-brand" href="#">Foodstuff</a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,11 +11,11 @@
       <ul class="navbar-nav mr-auto" >
         <li class="nav-item active"  >
           <!-- <a class="nav-link" href="#">Home(News Feeds) <span class="sr-only">(current)</span></a> -->
-          <a routerLink="home" class="nav-link" routerLinkActive="active">Home(News Feeds)</a>
+          <a routerLink="/home" class="nav-link mx-3 " routerLinkActive="active">Home(News Feeds)</a>
         </li>
         <li class="nav-item">
           <!-- <a class="nav-link" href="#">My Profile</a> -->
-          <a routerLink="#" class="nav-link" routerLinkActive="active">Profile</a>
+          <a [routerLink]="['/users', cid]" class="nav-link mx-3" routerLinkActive="active">Profile</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Followed</a>
@@ -27,5 +31,10 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="user.email" name="email">
         <button class="btn btn btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
+      <div class="p-1">
+      <button class="btn btn-secondary mx-3" (click)="logout()">Logout</button>
+    </div>
     </div>
   </nav>
+  </div>
+ 
