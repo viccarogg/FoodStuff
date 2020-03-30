@@ -77,11 +77,11 @@ export class ViewUserComponent implements OnInit, OnDestroy {
     });
 
 
-    // this.postService.getPostsByUser(this.userId).subscribe(posts => this.postsToDisplay = posts);
+     this.postService.getPostsByUser(this.userId).subscribe(posts => this.postsToDisplay = posts);
 
-    // this.userService.getFollowers(this.userId).subscribe(users => this.seeFollowers = users)
+     this.userService.getFollowers(this.userId).subscribe(users => this.seeFollowers = users)
 
-    // this.userService.getFollowees(this.userId).subscribe(user => this.seeFollowing = user)
+     this.userService.getFollowees(this.userId).subscribe(user => this.seeFollowing = user)
 
   }
 
