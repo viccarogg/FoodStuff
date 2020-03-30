@@ -138,6 +138,6 @@ export class PostComponent implements OnInit {
     return false;
   }
   deleteComment(id){
-    this.commentService.deleteComment(id);
+    this.commentService.deleteComment(id).subscribe(data => console.log(data));
   }
 }
