@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   submitted = false;
 
   searchParam:string;
-
+  newSearch:string
   // cid = Number(sessionStorage.getItem("currentUserId"));
 
    cid: any;
@@ -36,6 +36,7 @@ export class NavbarComponent implements OnInit {
   if (this.searchParam != undefined)
   {  
    // search recipe titles
+   sessionStorage.setItem("searchParam",this.searchParam);
     this.router.navigate(['/search/'+ this.searchParam]);
   }
   else

@@ -57,8 +57,9 @@ export class PostService {
 
   getPostsByTitle(searchstr: string): Observable<any> {
     //alert('this is in');
-    alert(searchstr)
-    return this.http.get(`http://localhost:9090/api/posts/search/${searchstr}`)
+    alert(`${this.baseUrl}/search/${searchstr}`);
+    // return this.http.get(`http://localhost:9090/api/posts/search/${searchstr}`)
+    return this.http.get(`${this.baseUrl}/search/${searchstr}`)
   }
 
 
