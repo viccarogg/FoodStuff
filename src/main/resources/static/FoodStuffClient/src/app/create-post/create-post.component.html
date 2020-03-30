@@ -1,5 +1,6 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
+  <div>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Create A Post!</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -12,13 +13,14 @@
       <label>Post Title</label>
       <input type="text" id="title" style="margin-left: 10px;" required [(ngModel)]="post.title" name="title"/><br>
       <label>Content</label><br>
-      <textarea id="content" rows="10" cols="63" required [(ngModel)]="post.content" name="content"></textarea>
+      <textarea id="content" rows="15" cols="50" required [(ngModel)]="post.content" name="content"></textarea>
 
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-outline-dark">Post</button>
     </div>
   </form>
+</div>
 </ng-template>
 
 
