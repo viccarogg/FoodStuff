@@ -37,15 +37,41 @@
    top:100px;
 }
 
-#divlogo{
-    position:relative;  
-    top:50px;   
-    height:100px;
+#divlogo{ 
+     
+    height:200px;
     width: 600px;
-   left: 32%;
+   
 
 }
 
 #divlogocontainer{
+    top:50px;  
+    position:relative;  
+    text-align: center;
+}
+
+#divUsers
+{
+    width: 80%;
     margin:0 auto;
+}
+
+#divposts{
+    width: 80%;
+    margin:0 auto;  
+}
+
+#divlogosmall
+{
+   color :white;
+   font-weight: 1000;
+}
+
+#mainbody{
+    background-color:#E1E8ED;
+}
+
+#tdnames{
+    font-weight: 500;
 }
