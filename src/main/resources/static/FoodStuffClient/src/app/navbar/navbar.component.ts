@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { ServiceUsersService } from '../service-users.service'
 import { Router } from '@angular/router';
-import {PostService} from '../post.service';
+import { PostService } from '../post.service';
 import { Post } from '../models/post';
 
 @Component({
@@ -14,17 +14,21 @@ export class NavbarComponent implements OnInit {
   user: User = new User();
   submitted = false;
 
-  searchParam:string;
+  searchParam: string;
 
   // cid = Number(sessionStorage.getItem("currentUserId"));
 
-   cid: any;
+  cid: any;
 
 
-   constructor(private userService: ServiceUsersService,private postService: PostService,private router: Router) { }
+  constructor(private userService: ServiceUsersService, private postService: PostService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cid = parseInt(sessionStorage.getItem("currentUserId"));
+    if (sessionStorage.length == 0) {
+      this.router.navigate(['/login'])
+    } else {
+      this.cid = parseInt(sessionStorage.getItem("currentUserId"));
+    }
   }
 
   logout() {
@@ -33,20 +37,18 @@ export class NavbarComponent implements OnInit {
   }
 
   Search() {
-  if (this.searchParam != undefined)
-  {  
-   // search recipe titles
-    this.router.navigate(['/search/'+ this.searchParam]);
-  }
-  else
-  {  
-    this.router.navigate(['/allusers']);}
+    if (this.searchParam != undefined) {
+      // search recipe titles
+      this.router.navigate(['/search/' + this.searchParam]);
+    }
+    else {
+      this.router.navigate(['/allusers']);
+    }
   }
 
 
   onSubmit() {
-    this.Search();  
+    this.Search();
   }
-
 
 }
