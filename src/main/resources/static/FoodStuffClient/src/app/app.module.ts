@@ -22,7 +22,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
 
 import { SearchPostsComponent } from './search-posts/search-posts.component';
 
-// import { SeeUsersComponent } from './see-users/see-users.component';
+
 
 
 
@@ -42,7 +42,6 @@ import { SearchPostsComponent } from './search-posts/search-posts.component';
     ListUsersComponent,
     NgbdModalConfig,
     SearchPostsComponent
-    // SeeUsersComponent
 
 
   ],
@@ -51,7 +50,7 @@ import { SearchPostsComponent } from './search-posts/search-posts.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     NgbModule
 
   ],
