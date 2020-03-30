@@ -21,7 +21,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
 
 import { SearchPostsComponent } from './search-posts/search-posts.component';
 
-import { SeeUsersComponent } from './see-users/see-users.component';
+// import { SeeUsersComponent } from './see-users/see-users.component';
 
 
 
@@ -40,8 +40,8 @@ import { SeeUsersComponent } from './see-users/see-users.component';
     NavbarComponent,
     ListUsersComponent,
     NgbdModalConfig,
-    SearchPostsComponent,
-    SeeUsersComponent
+    SearchPostsComponent
+    // SeeUsersComponent
 
 
   ],

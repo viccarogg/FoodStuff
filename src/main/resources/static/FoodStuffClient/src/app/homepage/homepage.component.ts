@@ -25,7 +25,7 @@ export class HomepageComponent implements OnInit {
     
 
     if (sessionStorage.length == 0) {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/login'])
     }
     else {
       this.username = sessionStorage.getItem("username");
