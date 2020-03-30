@@ -132,4 +132,12 @@ export class PostComponent implements OnInit {
     this.commentService.createComment(newComment).subscribe(data => console.log(data));
     }
   }
+  checkIfDeletable(id) {
+    if(id == this.cid)
+      return true;
+    return false;
+  }
+  deleteComment(id){
+    this.commentService.deleteComment(id);
+  }
 }
