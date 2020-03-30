@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { ServiceUsersService } from '../service-users.service'
 import { Router } from '@angular/router';
-
+import {PostService} from '../post.service';
+import { Post } from '../models/post';
 
 @Component({
   selector: 'app-navbar',
@@ -20,8 +21,7 @@ export class NavbarComponent implements OnInit {
    cid: any;
 
 
-  constructor(private userService: ServiceUsersService,
-    private router: Router) { }
+   constructor(private userService: ServiceUsersService,private postService: PostService,private router: Router) { }
 
   ngOnInit(): void {
     this.cid = sessionStorage.getItem("currentUserId");
@@ -29,23 +29,23 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     sessionStorage.clear();
-    // sessionStorage.("currentUserId");
     this.router.navigate(['/login'])
   }
 
-  userSearch() {
-    // this.userService.createUser(this.user)
-    //   .subscribe(data => console.log(data), error => console.log(error));
-    // this.user = new User();
-  //  this.gotoList();
-  this.router.navigate(['/allusers']);
+  Search() {
+  if (this.searchParam != undefined)
+  {  
+   // search recipe titles
+    this.router.navigate(['/search/'+ this.searchParam]);
+  }
+  else
+  {  
+    this.router.navigate(['/allusers']);}
   }
 
 
   onSubmit() {
-    // this.submitted = true;
-    // this.save();  
-    this.userSearch();  
+    this.Search();  
   }
 
 
