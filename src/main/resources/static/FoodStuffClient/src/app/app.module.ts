@@ -18,6 +18,7 @@ import { PostService } from './post.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { SeeUsersComponent } from './see-users/see-users.component';
 
 
 
@@ -34,7 +35,8 @@ import { ListUsersComponent } from './list-users/list-users.component';
     PostComponent,
     NavbarComponent,
     ListUsersComponent,
-    NgbdModalConfig
+    NgbdModalConfig,
+    SeeUsersComponent
 
 
   ],

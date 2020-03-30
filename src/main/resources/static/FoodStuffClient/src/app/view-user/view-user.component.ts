@@ -19,6 +19,8 @@ export class ViewUserComponent implements OnInit {
   following: User[];
   userId: number;
   postsToDisplay: any;
+  seeFollowers: any;
+  seeFollowing: any;
   
 
   allPost: any;
@@ -58,7 +60,16 @@ export class ViewUserComponent implements OnInit {
 
     this.postService.getPostsByUser(this.userId).subscribe(posts => this.postsToDisplay = posts);
 
+    this.userService.getFollowers(this.userId).subscribe(users => this.seeFollowers = users)
 
+    this.userService.getFollowees(this.userId).subscribe(user => this.seeFollowing = user)
+
+
+  }
+
+
+  reload() {
+    window.location.reload();
   }
 
 }
