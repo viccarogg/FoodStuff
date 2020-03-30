@@ -18,7 +18,11 @@ import { PostService } from './post.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+
 import { SearchPostsComponent } from './search-posts/search-posts.component';
+
+import { SeeUsersComponent } from './see-users/see-users.component';
+
 
 
 
@@ -36,7 +40,8 @@ import { SearchPostsComponent } from './search-posts/search-posts.component';
     NavbarComponent,
     ListUsersComponent,
     NgbdModalConfig,
-    SearchPostsComponent
+    SearchPostsComponent,
+    SeeUsersComponent
 
 
   ],

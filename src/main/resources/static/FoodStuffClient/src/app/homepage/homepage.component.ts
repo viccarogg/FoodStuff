@@ -21,12 +21,17 @@ export class HomepageComponent implements OnInit {
   constructor(private router: Router, private userService: ServiceUsersService, private postService: PostService) { }
 
   ngOnInit(): void {
+
+    
+
     if (sessionStorage.length == 0) {
       this.router.navigate(['/home'])
     }
     else {
       this.username = sessionStorage.getItem("username");
       this.userId = Number(sessionStorage.getItem("currentUserId"));
+
+    
 
       this.userService.getFollowees(this.userId).subscribe(followees => {
 
@@ -45,6 +50,10 @@ export class HomepageComponent implements OnInit {
         //             console.log("got data")
         //             console.log(this.postsToDisplay)
         // }
+
+       
+          
+       
         }
       });
     }
