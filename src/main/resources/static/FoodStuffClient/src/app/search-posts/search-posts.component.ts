@@ -10,14 +10,15 @@ import { ActivatedRoute  } from '@angular/router';
   styleUrls: ['./search-posts.component.css']
 })
 export class SearchPostsComponent implements OnInit {
-  posts: any;
+  posts: Post;
   searchParam:string;
   constructor(private postservice: PostService,private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-   alert(this.router.snapshot.params.search);
+   // this.searchParam = sessionStorage.getItem("searchParam");
+  console.log(this.router.snapshot.params.search);
    this.postservice.getPostsByTitle(this.router.snapshot.params.search).subscribe(u => {
-    this.posts = u;
+    this.posts = u;   
   });
   }
   
