@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ServiceUsersService } from './../service-users.service';
 import { PostService } from './../post.service';
 import { User } from '../models/user';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { Post } from '../models/post';
+import { Subject } from 'rxjs';
+import{ takeUntil, filter }from'rxjs/operators';
 
 @Component({
   selector: 'app-view-user',
   templateUrl: './view-user.component.html',
   styleUrls: ['./view-user.component.css']
 })
-export class ViewUserComponent implements OnInit {
+export class ViewUserComponent implements OnInit, OnDestroy {
 
   user: User;
   posts: Post[];
@@ -21,16 +23,33 @@ export class ViewUserComponent implements OnInit {
   postsToDisplay: any;
   seeFollowers: any;
   seeFollowing: any;
-  
+
+  public destroyed = new Subject<any>();
 
   allPost: any;
 
   constructor(private userService: ServiceUsersService,
     private postService: PostService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.fetchData();
+    this.router.events.pipe(
+      filter((event: RouterEvent) => event instanceof NavigationEnd),
+      takeUntil(this.destroyed)
+    ).subscribe(() => {
+      this.fetchData();
+    });
+  }
 
+  ngOnDestroy(): void {
+    this.destroyed.next();
+    this.destroyed.complete();
+  }
+
+
+  fetchData() {
     this.userId = Number(sessionStorage.getItem("currentUserId"));
 
     this.userService.getUserById(this.route.snapshot.params.id).subscribe(u => {
@@ -58,15 +77,13 @@ export class ViewUserComponent implements OnInit {
     });
 
 
-    this.postService.getPostsByUser(this.userId).subscribe(posts => this.postsToDisplay = posts);
+    // this.postService.getPostsByUser(this.userId).subscribe(posts => this.postsToDisplay = posts);
 
-    this.userService.getFollowers(this.userId).subscribe(users => this.seeFollowers = users)
+    // this.userService.getFollowers(this.userId).subscribe(users => this.seeFollowers = users)
 
-    this.userService.getFollowees(this.userId).subscribe(user => this.seeFollowing = user)
-
+    // this.userService.getFollowees(this.userId).subscribe(user => this.seeFollowing = user)
 
   }
-
 
   reload() {
     window.location.reload();
