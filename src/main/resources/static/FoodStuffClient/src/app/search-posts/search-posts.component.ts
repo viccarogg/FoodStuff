@@ -15,10 +15,10 @@ export class SearchPostsComponent implements OnInit {
   constructor(private postservice: PostService,private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.searchParam = sessionStorage.getItem("searchParam");
-   //alert(this.router.snapshot.params.search);
-   this.postservice.getPostsByTitle(this.searchParam).subscribe(u => {
-    this.posts = u;
+   // this.searchParam = sessionStorage.getItem("searchParam");
+  console.log(this.router.snapshot.params.search);
+   this.postservice.getPostsByTitle(this.router.snapshot.params.search).subscribe(u => {
+    this.posts = u;   
   });
   }
   

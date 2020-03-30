@@ -1,6 +1,7 @@
-<div class="panel panel-primary">
+<app-navbar></app-navbar>
+<div class="panel panel-primary" id="divUsers">
     <div class="panel-heading">
-      <h2>Users</h2>
+     <br> <h2 >Users</h2>
     </div>
     <div class="panel-body">
       <table class="table table-striped">
@@ -12,7 +13,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of users | async">
-            <td><a href="/users/{{user.userId}}" >{{user.username}}</a></td>
+            <td id="tdnames"><a href="/users/{{user.userId}}" >{{user.username}}</a></td>
             <td>{{user.email}}</td>
           </tr>
         </tbody>
