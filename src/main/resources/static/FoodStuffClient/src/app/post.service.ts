@@ -51,9 +51,15 @@ export class PostService {
   //     console.log(data)
   //     result = result.concat(data);
   //   }
-  //   console.log(result)
+  //   console.log(result)  
   //   return result;
   // }
 
-  
+  getPostsByTitle(searchstr: string): Observable<any> {
+    //alert('this is in');
+    alert(searchstr)
+    return this.http.get(`http://localhost:9090/api/posts/search/${searchstr}`)
+  }
+
+
 }

@@ -6,7 +6,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { ListUsersComponent} from "./list-users/list-users.component";
 import { NgbdModalConfig } from './create-post/create-post.component';
-
+import { SearchPostsComponent} from './search-posts/search-posts.component';
 
 
 
@@ -15,10 +15,8 @@ const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
 {path: 'register', component: CreateUserComponent},
 { path: 'users/:id', component: ViewUserComponent },
 { path: 'allusers', component: ListUsersComponent },
-{path: 'login', component: LoginComponent}
-
-
-];
+{ path: 'search/:search', component: SearchPostsComponent },
+{path: 'login', component: LoginComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
