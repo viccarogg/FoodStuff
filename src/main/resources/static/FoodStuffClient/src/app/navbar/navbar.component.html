@@ -21,25 +21,10 @@
           <div class="mx-d">
           <app-create-post class="align-self-center"></app-create-post>
         </div>
-        </li>
-        <!-- <li class="nav-item">
-          <a routerLink="/cpost" class="nav-link mx-3" routerLinkActive="active">Create Post</a>
-        </li>
-        <li>
-         
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Followed</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="#">Saved</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="#">Logout</a>
-          </li> -->   
+        </li> 
       </ul>
       <form (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="user.email" name="email">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="searchParam" name="search">
         <button class="btn btn btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
       <div class="p-1">

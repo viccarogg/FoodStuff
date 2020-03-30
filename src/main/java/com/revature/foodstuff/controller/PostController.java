@@ -81,4 +81,9 @@ public class PostController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
+	
+	@GetMapping("/posts/search/{pattern}")
+	public List<Post> findByTitle(@PathVariable(value="pattern") String pattern) {
+		return postRepository.findByTitle(pattern.toLowerCase());
+	}
 }
