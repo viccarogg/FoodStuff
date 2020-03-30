@@ -47,7 +47,9 @@
           
           <a [routerLink]="['/users', comments.userId.userId]" routerLinkActive="router-link-active" >{{comments.userId.username}} </a>
           {{comments.comments}}
-
+          <div *ngIf="checkIfDeletable(comments.userId.userId)">
+            <button type="button" (click)="deleteComment(comments.commentId)">Delete</button>
+          </div>
        </div>
         
 

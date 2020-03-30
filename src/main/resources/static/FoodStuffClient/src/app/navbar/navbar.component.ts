@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.cid = sessionStorage.getItem("currentUserId");
+    this.cid = parseInt(sessionStorage.getItem("currentUserId"));
   }
 
   logout() {

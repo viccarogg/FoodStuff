@@ -24,4 +24,10 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 			nativeQuery=true)
 	public List<Post> findByUserSaves(@Param("userId") Long userId);
 
+	
+	// this method finds posts based search pattern
+	@Query(value="SELECT * FROM POSTS p WHERE LOWER(p.title) Like %:pattern%",
+		   nativeQuery=true)
+    public List<Post> findByTitle(@Param("pattern") String pattern);
+	
 }
